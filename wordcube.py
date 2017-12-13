@@ -26,7 +26,7 @@ class Grid(object):
                    self.letters[(3, 0)], self.letters[(3, 1)], self.letters[(3, 2)], self.letters[(3, 3)]))
 
     def shake(self, cubes_list):
-        random.seed(16)
+        random.seed(11)
         random.shuffle(cubes_list)
         for y in range(4):
             for x in range(4):
@@ -37,10 +37,13 @@ class Grid(object):
             for y in range(4):
                 print('{}: ({}, {})'.format(my_word[0], x, y))
                 if my_word[0] in self.letters[(x, y)]:
-                    return self.continuous_line(my_word[1:], x, y)
+                    if self.walk(my_word[1:], x, y):
+                        return True
+                    else:
+                        pass
         return False
 
-    def continuous_line(self, my_word, x_pos, y_pos):
+    def walk(self, my_word, x_pos, y_pos):
         for x in range(-1, 2):
             for y in range(-1, 2):
                 print('{}: ({}, {})'.format(my_word[0],x_pos + x, y_pos + y))
@@ -48,13 +51,9 @@ class Grid(object):
                     if len(my_word) == 1:
                         return True
                     else:
-                        self.continuous_line(my_word[1:], x_pos + x, y_pos + y)
+                        return self.walk(my_word[1:], x_pos + x, y_pos + y)
+        print(False)
         return False
-
-
-        # return True
-        # return False
-
 
 cubes_list = ['AACIOT', 'AHMORS', 'EGKLUY', 'ABILTY', 'ACDEMP', 'EGINTV', 'GILRUW', 'ELPSTU', 'DENOSW', 'ACELRS',
                 'ABJMOQ', 'EEFHIY', 'EHINPS', 'DKNOTU', 'ADENVZ', 'BIFORX']
@@ -66,4 +65,4 @@ cubes_list = ['AACIOT', 'AHMORS', 'EGKLUY', 'ABILTY', 'ACDEMP', 'EGINTV', 'GILRU
 g = Grid()
 g.shake(cubes_list)
 g.display()
-print(g.find_word('GAS'))
+print(g.find_word('COATS'))
