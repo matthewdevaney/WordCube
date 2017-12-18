@@ -1,3 +1,12 @@
+"""
+wordcube.py
+Title: Word Cube
+Created By: Matthew Devaney
+Description: a simple text-based word search game
+Why I Made This: to practice working with dictionaries data structures and study their performance and to do
+an exercise that requires recursive functions to find the solution to a problem
+"""
+
 import collections
 from collections import OrderedDict
 import os
