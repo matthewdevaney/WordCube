@@ -241,7 +241,7 @@ def main():
     """main program loop"""
 
     # game paramters
-    game_length = 10
+    game_length = 60
     grid_size = 5
     min_word_length = 3
     word_list_size = 30
